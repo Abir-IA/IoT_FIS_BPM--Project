@@ -1,3 +1,8 @@
+% import csv file
+DataSet = readtable('EventDataSet.csv');
+
+
+
 n=6;
 %the controller inputs 
 for i=1:1:n

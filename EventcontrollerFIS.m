@@ -8,7 +8,17 @@ idx = cv.test;
 % Separate to training and test data
 dataTrain = DataSet(~idx,:);
 dataTest  = DataSet(idx,:);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ùùùù
+[num,txt,tab]=xlsread('EventData_FIS1.xls')
+ idevent=cell2mat({tab{2:end,1}}')
+ source=cell2mat({tab{2:end,2}}')
+ date=cell2mat({tab{2:end,3}}')
+ heure=cell2mat({tab{2:end,4}}')
+ intervalleJour=cell2mat({tab{2:end,5}}')
+ intervalleSaison=cell2mat({tab{2:end,6}}')
+ nivChutePrec=cell2mat({tab{2:end,7}}')
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 n=6;
 %the controller inputs 
 for i=1:1:n

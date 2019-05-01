@@ -3,7 +3,7 @@ DataSet = readtable('EventDataSet.csv');
 
 % divide a data set randomly into training and testing data set
 % train: 70%, test: 30%
-cv = cvpartition(size(DataSet,1),'HoldOut',0.3);
+cv = cvpartition(size(DataSet,1),'HoldOut',0.1);
 idx = cv.test;
 % Separate to training and test data
 dataTrain = DataSet(~idx,:);
@@ -11,15 +11,17 @@ dataTest  = DataSet(idx,:);
 
 % First test on Reading data from data set : we make our test here only on
 % a small xls file with only 20 random events
-[num,txt,tab]=xlsread('EventData_FIS1.xls')
- idevent=cell2mat({tab{2:end,1}}')
- source=cell2mat({tab{2:end,2}}')
- date=cell2mat({tab{2:end,3}}')
- heure=cell2mat({tab{2:end,4}}')
- intervalleJour=cell2mat({tab{2:end,5}}')
- intervalleSaison=cell2mat({tab{2:end,6}}')
- nivChutePrec=cell2mat({tab{2:end,7}}')
+%[num,txt,tab]=xlsread('EventData_FIS1.xls')
+%[num,txt,tab]=csvread('EventDataSet.csv');
+idevent=  dataTest(:, 1);
+source= dataTest(:, 2);
+date= dataTest(:, 3);
+heure= dataTest(:, 4);
+intervalleJour= dataTest(:, 5);
+intervalleSaison= dataTest(:, 6);
+nivChutePrec= dataTest(:, 7);
 
+ 
 % Our first example without the event dataset
 n=6;
 %the controller inputs 

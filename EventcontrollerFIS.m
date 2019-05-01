@@ -2,7 +2,7 @@
 DataSet = readtable('EventDataSet.csv');
 
 % divide a data set randomly into training and testing data set
-% Cross varidation (train: 70%, test: 30%)
+% train: 70%, test: 30%
 cv = cvpartition(size(DataSet,1),'HoldOut',0.3);
 idx = cv.test;
 % Separate to training and test data

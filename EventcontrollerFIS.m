@@ -1,7 +1,13 @@
 % import csv file
 DataSet = readtable('EventDataSet.csv');
 
-
+% divide a data set randomly into training and testing data set
+% Cross varidation (train: 70%, test: 30%)
+cv = cvpartition(size(DataSet,1),'HoldOut',0.3);
+idx = cv.test;
+% Separate to training and test data
+dataTrain = DataSet(~idx,:);
+dataTest  = DataSet(idx,:);
 
 n=6;
 %the controller inputs 
@@ -18,6 +24,8 @@ freq=[7;7;2;7;2;2];
 chuteur=[1;1;1;1;1;1];
 idniveau=[1;1;1;1;1;1];
 intervSemaine=[4;4;4;4;4;4];
+
+%structure 
 S(i).ID=idEvent(i);
 idevent(i)=S(i).ID;
 
@@ -54,15 +62,14 @@ idnive(i)=S(i).IDniveau;
 S(i).IntervSemaine=intervSemaine(i);
 intSem(i)=S(i).IntervSemaine;
 
+% event at time slot t
 a=[idEvent'; source';date';intervlaJour';intervlaSais';niveauChte']
 V1=a(:,1);
 V2=a(:,2);
 V3=a(:,3);
-% V2=a(:,2);
 V4=a(:,4);
 V5=a(:,5);
 V6=a(:,6);
-%V3=a(:,3)
 c=[V1, V2,V3,V4,V5,V6]
 
 end

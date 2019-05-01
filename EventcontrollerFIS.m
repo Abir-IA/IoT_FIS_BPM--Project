@@ -8,7 +8,9 @@ idx = cv.test;
 % Separate to training and test data
 dataTrain = DataSet(~idx,:);
 dataTest  = DataSet(idx,:);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ùùùù
+
+% First test on Reading data from data set : we make our test here only on
+% a small xls file with only 20 random events
 [num,txt,tab]=xlsread('EventData_FIS1.xls')
  idevent=cell2mat({tab{2:end,1}}')
  source=cell2mat({tab{2:end,2}}')
@@ -18,7 +20,7 @@ dataTest  = DataSet(idx,:);
  intervalleSaison=cell2mat({tab{2:end,6}}')
  nivChutePrec=cell2mat({tab{2:end,7}}')
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Our first example without the event dataset
 n=6;
 %the controller inputs 
 for i=1:1:n

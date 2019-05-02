@@ -31,5 +31,7 @@ chuteurRep=cell2mat({tab{2:end,11}}')
 idniveau_urgence=cell2mat({tab{2:end,12}}')
 
 intervalleSemaine=cell2mat({tab{2:end,13}}')
-%%%%%%%%%%%un probleme à ce niveau%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-intervalleChutePrec
+
+intervalleChutePrec=char({tab{2:end,14}}');   
+
+intervalleScore=char({tab{2:end,15}}');

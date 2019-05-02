@@ -11,8 +11,18 @@ dataTest  = DataSet(idx,:);
 
 % First test on Reading data from data set : we make our test here only on
 % a small xls file with only 20 random events
-%[num,txt,tab]=xlsread('EventData_FIS1.xls')
 %[num,txt,tab]=csvread('EventDataSet.csv');
+[num,txt,tab]=xlsread('EventData_FIS1.xls')
+ idevent=cell2mat({tab{2:end,1}}')
+ source=cell2mat({tab{2:end,2}}')
+ date=cell2mat({tab{2:end,3}}')
+ heure=cell2mat({tab{2:end,4}}')
+ intervalleJour=cell2mat({tab{2:end,5}}')
+ intervalleSaison=cell2mat({tab{2:end,6}}')
+ nivChutePrec=cell2mat({tab{2:end,7}}')
+
+% another way to access data from data set
+%we will decide later with once to choose for the rest of the code
 idevent=  dataTest(:, 1);
 source= dataTest(:, 2);
 date= dataTest(:, 3);

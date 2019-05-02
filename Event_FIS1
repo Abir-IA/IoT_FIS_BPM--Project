@@ -1,0 +1,35 @@
+[num,txt,tab]=xlsread('colaboration.xls')
+
+ idevent=cell2mat({tab{2:end,1}}')
+ 
+ source=cell2mat({tab{2:end,2}}')
+ 
+ date=cell2mat({tab{2:end,3}}')
+ 
+ heure=cell2mat({tab{2:end,4}}')
+ 
+ intervalleJour=cell2mat({tab{2:end,5}}')
+ 
+ intervalleSaison=cell2mat({tab{2:end,6}}')
+ 
+nivChutePrec1=({tab{2:end,7}}');
+b=cellfun(@ischar,nivChutePrec1)
+nivChutePrec1(b)={nan}
+nivChutePrec=cell2mat(nivChutePrec1)
+
+dureeChutePrec1=({tab{2:end,8}}');
+c=cellfun(@ischar,dureeChutePrec1)
+dureeChutePrec1(c)={nan}
+dureeChutePrec=cell2mat(dureeChutePrec1)
+
+scorePatient=cell2mat({tab{2:end,9}}')
+
+freqChutePatient=cell2mat({tab{2:end,10}}')
+
+chuteurRep=cell2mat({tab{2:end,11}}')
+
+idniveau_urgence=cell2mat({tab{2:end,12}}')
+
+intervalleSemaine=cell2mat({tab{2:end,13}}')
+%%%%%%%%%%%un probleme à ce niveau%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+intervalleChutePrec

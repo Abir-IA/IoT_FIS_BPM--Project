@@ -1,35 +1,71 @@
+% Use this part of the code if you have the data set otherwise start from
+% line 19 (xlsread) and use the sample data provided with this code
+% (eventdatasample.xls)
 % import csv file
-DataSet = readtable('EventDataSet.csv');
+    %DataSet = readtable('EventDataSet.csv');
 
 % divide a data set randomly into training and testing data set
 % train: 70%, test: 30%
-cv = cvpartition(size(DataSet,1),'HoldOut',0.1);
-idx = cv.test;
+    %cv = cvpartition(size(DataSet,1),'HoldOut',0.1);
+    %idx = cv.test;
 % Separate to training and test data
-dataTrain = DataSet(~idx,:);
-dataTest  = DataSet(idx,:);
+    %dataTrain = DataSet(~idx,:);
+    %dataTest  = DataSet(idx,:);
 
-% First test on Reading data from data set : we make our test here only on
-% a small xls file with only 20 random events
+% Reading data from data set : we make our test here only on
+% a small xls file with random events
 %[num,txt,tab]=csvread('EventDataSet.csv');
-[num,txt,tab]=xlsread('EventData_FIS1.xls')
+
+[num,txt,tab]=xlsread('eventdatasample.xls')
+
  idevent=cell2mat({tab{2:end,1}}')
+ 
  source=cell2mat({tab{2:end,2}}')
+ 
  date=cell2mat({tab{2:end,3}}')
+ 
  heure=cell2mat({tab{2:end,4}}')
+ 
  intervalleJour=cell2mat({tab{2:end,5}}')
+ 
  intervalleSaison=cell2mat({tab{2:end,6}}')
- nivChutePrec=cell2mat({tab{2:end,7}}')
+ 
+ nivChutePrec1=({tab{2:end,7}}');
+ 
+ b=cellfun(@ischar,nivChutePrec1)
+ nivChutePrec1(b)={nan}
+ 
+ nivChutePrec=cell2mat(nivChutePrec1);
+
+ dureeChutePrec1=({tab{2:end,8}}');
+ 
+ c=cellfun(@ischar,dureeChutePrec1)
+ dureeChutePrec1(c)={nan}
+ dureeChutePrec=cell2mat(dureeChutePrec1);
+
+ scorePatient=cell2mat({tab{2:end,9}}');
+
+ freqChutePatient=cell2mat({tab{2:end,10}}')
+
+ chuteurRep=cell2mat({tab{2:end,11}}');
+
+ idniveau_urgence=cell2mat({tab{2:end,12}}');
+
+intervalleSemaine=cell2mat({tab{2:end,13}}');
+
+intervalleChutePrec=char({tab{2:end,14}}');   
+
+intervalleScore=char({tab{2:end,15}}');
 
 % another way to access data from data set
 %we will decide later with once to choose for the rest of the code
-idevent=  dataTest(:, 1);
-source= dataTest(:, 2);
-date= dataTest(:, 3);
-heure= dataTest(:, 4);
-intervalleJour= dataTest(:, 5);
-intervalleSaison= dataTest(:, 6);
-nivChutePrec= dataTest(:, 7);
+%idevent=  dataTest(:, 1);
+%source= dataTest(:, 2);
+%date= dataTest(:, 3);
+%heure= dataTest(:, 4);
+%intervalleJour= dataTest(:, 5);
+%intervalleSaison= dataTest(:, 6);
+%nivChutePrec= dataTest(:, 7);
 
  
 % Our first example without the event dataset

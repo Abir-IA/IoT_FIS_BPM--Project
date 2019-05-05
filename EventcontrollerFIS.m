@@ -16,45 +16,40 @@
 % a small xls file with random events
 %[num,txt,tab]=csvread('EventDataSet.csv');
 
-[num,txt,tab]=xlsread('eventdatasample.xls')
+[num,txt,tab]=xlsread('eventdatasample.xls');
 
- idevent=cell2mat({tab{2:end,1}}')
+ idevent=cell2mat({tab{2:end,1}}');
+ source=cell2mat({tab{2:end,2}}');
+ d=({tab{2:end,3}}');
+ formatOut = 'dd/mm/yyyy';
+ DateStringIn=d;
+ date=datestr(DateStringIn,formatOut);
+
+ h=({tab{2:end,4}}');
+ formatOut ='HH:MM:SS';
+ heure= datestr(h,formatOut);
  
- source=cell2mat({tab{2:end,2}}')
+ intervalleJour=cell2mat({tab{2:end,5}}');
  
- date=cell2mat({tab{2:end,3}}')
- 
- heure=cell2mat({tab{2:end,4}}')
- 
- intervalleJour=cell2mat({tab{2:end,5}}')
- 
- intervalleSaison=cell2mat({tab{2:end,6}}')
+ intervalleSaison=cell2mat({tab{2:end,6}}');
  
  nivChutePrec1=({tab{2:end,7}}');
- 
- b=cellfun(@ischar,nivChutePrec1)
- nivChutePrec1(b)={nan}
- 
- nivChutePrec=cell2mat(nivChutePrec1);
+b=cellfun(@ischar,nivChutePrec1);
+nivChutePrec1(b)={nan}
+nivChutePrec=cell2mat(nivChutePrec1);
 
- dureeChutePrec1=({tab{2:end,8}}');
- 
- c=cellfun(@ischar,dureeChutePrec1)
- dureeChutePrec1(c)={nan}
- dureeChutePrec=cell2mat(dureeChutePrec1);
+dureeChutePrec1=({tab{2:end,8}}');
+c=cellfun(@ischar,dureeChutePrec1);
+dureeChutePrec1(c)={nan}
+dureeChutePrec=cell2mat(dureeChutePrec1);
 
- scorePatient=cell2mat({tab{2:end,9}}');
-
- freqChutePatient=cell2mat({tab{2:end,10}}')
-
- chuteurRep=cell2mat({tab{2:end,11}}');
-
- idniveau_urgence=cell2mat({tab{2:end,12}}');
-
+scorePatient=cell2mat({tab{2:end,9}}');      
+freqChutePatient=cell2mat({tab{2:end,10}}');
+chuteurRep=cell2mat({tab{2:end,11}}');
+idniveau_urgence=cell2mat({tab{2:end,12}}');
 intervalleSemaine=cell2mat({tab{2:end,13}}');
 
-intervalleChutePrec=char({tab{2:end,14}}');   
-
+intervalleChutePrec=cell2mat({tab{2:end,14}}');
 intervalleScore=char({tab{2:end,15}}');
 
 % another way to access data from data set

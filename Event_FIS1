@@ -79,4 +79,5 @@ inChute(i)=S(i).INteChutePrec;
 S(i).IntervalleScore=strvcat(intervalleScore);
 inScore=S(i).IntervalleScore;
 
+t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
 

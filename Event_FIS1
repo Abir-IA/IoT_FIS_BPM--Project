@@ -33,3 +33,50 @@ intervalleSemaine=cell2mat({tab{2:end,13}}');
 
 intervalleChutePrec=cell2mat({tab{2:end,14}}');
 intervalleScore=char({tab{2:end,15}}');
+
+S(i).ID= idevent(i);
+idev(i)=S(i).ID;
+
+ S(i).Source= strvcat(source(i));
+ sour(i)=S(i).Source;
+
+S(i).Date=date(i);
+dte(i)=S(i).Date;
+
+S(i).IntervlaJour=intervalleJour(i);
+inJ(i)=S(i).IntervlaJour;
+
+S(i).IntervlaSais=intervalleSaison(i);
+inLs(i)=S(i).IntervlaSais;
+
+S(i).NiveauChte=nivChutePrec(i);
+nivCh(i)=S(i).NiveauChte;
+
+S(i).DureeChute=dureeChutePrec(i);
+durCht(i)=S(i).DureeChute;
+
+S(i).Score=scorePatient(i);
+score(i)=S(i).Score;
+
+S(i).Freq=freqChutePatient(i);
+frq(i)=S(i).Freq;
+
+S(i).Chuteur=chuteurRep(i);
+chteur(i)=S(i).Chuteur;
+
+S(i).ChuteurRep=chuteurRep(i);
+chte(i)=S(i).ChuteurRep;
+
+S(i).IDniveau_urgence=idniveau_urgence(i);
+idniveau(i)=S(i).IDniveau_urgence;
+
+S(i).IntervalleSemaine=intervalleSemaine(i);
+intervSemaine(i)=S(i).IntervalleSemaine;
+
+S(i).INteChutePrec=strvcat(intervalleChutePrec(i));
+inChute(i)=S(i).INteChutePrec;
+
+S(i).IntervalleScore=strvcat(intervalleScore);
+inScore=S(i).IntervalleScore;
+
+

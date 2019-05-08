@@ -18,7 +18,7 @@
 
 [num,txt,tab]=xlsread('eventdatasample.xls');
 
- idevent=cell2mat({tab{2:end,1}}');
+devent=cell2mat({tab{2:end,1}}')
  source=cell2mat({tab{2:end,2}}');
  d=({tab{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
@@ -36,7 +36,7 @@
  nivChutePrec1=({tab{2:end,7}}');
 b=cellfun(@ischar,nivChutePrec1);
 nivChutePrec1(b)={nan}
-nivChutePrec=cell2mat(nivChutePrec1);
+nivChutePrec=cell2mat(nivChutePrec1)
 
 dureeChutePrec1=({tab{2:end,8}}');
 c=cellfun(@ischar,dureeChutePrec1);
@@ -52,6 +52,54 @@ intervalleSemaine=cell2mat({tab{2:end,13}}');
 intervalleChutePrec=cell2mat({tab{2:end,14}}');
 intervalleScore=char({tab{2:end,15}}');
 
+S(i).ID= idevent(i);
+idev(i)=S(i).ID;
+
+ S(i).Source= strvcat(source(i));
+ sour(i)=S(i).Source;
+
+S(i).Date=date(i);
+dte(i)=S(i).Date;
+
+S(i).IntervlaJour=intervalleJour(i);
+inJ(i)=S(i).IntervlaJour;
+
+S(i).IntervlaSais=intervalleSaison(i);
+inLs(i)=S(i).IntervlaSais;
+
+S(i).NiveauChte=nivChutePrec(i);
+nivCh(i)=S(i).NiveauChte;
+
+S(i).DureeChute=dureeChutePrec(i);
+durCht(i)=S(i).DureeChute;
+
+S(i).Score=scorePatient(i);
+score(i)=S(i).Score;
+
+S(i).Freq=freqChutePatient(i);
+frq(i)=S(i).Freq;
+
+S(i).Chuteur=chuteurRep(i);
+chteur(i)=S(i).Chuteur;
+
+S(i).ChuteurRep=chuteurRep(i);
+chte(i)=S(i).ChuteurRep;
+
+S(i).IDniveau_urgence=idniveau_urgence(i);
+idniveau(i)=S(i).IDniveau_urgence;
+
+S(i).IntervalleSemaine=intervalleSemaine(i);
+intervSemaine(i)=S(i).IntervalleSemaine;
+
+S(i).INteChutePrec=strvcat(intervalleChutePrec(i));
+inChute(i)=S(i).INteChutePrec;
+
+S(i).IntervalleScore=strvcat(intervalleScore);
+inScore=S(i).IntervalleScore;
+
+t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
+
+
 % another way to access data from data set
 %we will decide later with once to choose for the rest of the code
 %idevent=  dataTest(:, 1);
@@ -61,6 +109,8 @@ intervalleScore=char({tab{2:end,15}}');
 %intervalleJour= dataTest(:, 5);
 %intervalleSaison= dataTest(:, 6);
 %nivChutePrec= dataTest(:, 7);
+
+
 
  
 % Our first example without the event dataset

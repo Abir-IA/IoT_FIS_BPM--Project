@@ -100,21 +100,34 @@ inChute(i)=S(i).INteChutePrec;
 S(i).IntervalleScore=strvcat(intervalleScore);
 inScore=S(i).IntervalleScore;
 
-t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
+%t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
+
+% Matrix Construction%
+
+T=NaN(19,15)
+T(:,1)=idevent
+T(1:numel(intervalleJour),5)=intervalleJour
+T(1:numel(intervalleSaison),6)=intervalleSaison
+%T(1:numel(nivChutePrec),7)=nivChutePrec
+T(1:numel(dureeChutePrec),8)=dureeChutePrec
+T(1:numel(scorePatient),9)=scorePatient
+ T(1:numel(freqChutePatient),10)=freqChutePatient
+T(1:numel(chuteurRep),11)=chuteurRep
+ T(1:numel(idniveauUrgence),12)=idniveauUrgence
+T(1:numel(intervalleSemaine),13)=intervalleSemaine
 
 
 %Data for the second input of the first controller: input about device
 %status
-[num,txt,tab]=csvread('DeviceDataSet.csv');
+[num,txt,tab]=xlsread('DeviceDataSet.xls');
+ 
+ %ID_Device_Cam=cell2mat({tab{2:end,2}}');  
+ ID_Device=({tab{2:end,1}}');
+ id=cellfun(@ischar,ID_Device);
+ ID_Device(id)={nan}
+ ID_Device_Cam=cell2mat(ID_Device); 
 
- source=cell2mat({tab{2:end,1}}');
- 
- %ID_Device_Cam=cell2mat({tab{2:end,2}}'); 
- 
-ID_Device=({tab{2:end,2}}');
-id=cellfun(@ischar,ID_Device);
-ID_Device(id)={nan}
-ID_Device_Cam=cell2mat(ID_Device); 
+ Position=cell2mat({tab{2:end,2}}');
  
  dateDevice=({tab{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
@@ -129,8 +142,7 @@ ID_Device_Cam=cell2mat(ID_Device);
  
  Total_FalseAlerts_2018=cell2mat({tab{2:end,7}}');
  
- Device_Changed=cell2mat({tab{2:end,8}}')
-
+ Device_Changed=cell2mat({tab{2:end,8}}');
  
 
 

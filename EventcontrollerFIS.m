@@ -129,7 +129,7 @@ ID_Device_Cam=cell2mat(ID_Device);
  
  Total_FalseAlerts_2018=cell2mat({tab{2:end,7}}');
  
- Device_Changed=cell2mat({tab{2:end,8}}');
+ Device_Changed=cell2mat({tab{2:end,8}}')
 
  
 

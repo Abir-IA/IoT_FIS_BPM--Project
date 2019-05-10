@@ -84,18 +84,23 @@ inScore=S(i).IntervalleScore;
 
 
 %%%%%%%Matrix Construction%%%%%%%%%%%%%ù%
+
 T=NaN(19,15)
 T(:,1)=idevent
+x=datenum(date)
+T(1:numel(source),2)=source
+T(1:numel(x),3)=x
+% T(1:numel(heure),4)=heure
 T(1:numel(intervalleJour),5)=intervalleJour
 T(1:numel(intervalleSaison),6)=intervalleSaison
-%T(1:numel(nivChutePrec),7)=nivChutePrec
-T(1:numel(dureeChutePrec),8)=dureeChutePrec
-T(1:numel(scorePatient),9)=scorePatient
+T(1:numel(nivChutePrec),7)=nivChutePrec
+ T(1:numel(dureeChutePrec),8)=dureeChutePrec
  T(1:numel(freqChutePatient),10)=freqChutePatient
 T(1:numel(chuteurRep),11)=chuteurRep
- T(1:numel(idniveauUrgence),12)=idniveauUrgence
- T(1:numel(intervalleSemaine),13)=intervalleSemaine
-
+T(1:numel(idniveauUrgence),12)=idniveauUrgence
+T(1:numel(intervalleSemaine),13)=intervalleSemaine
+T(1:numel(intervalleChutePrec),14)=intervalleChutePrec
+ % T(1:numel(intervalleScore),15)=intervalleScore
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%Second DataSet%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

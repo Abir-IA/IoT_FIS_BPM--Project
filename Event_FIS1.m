@@ -9,7 +9,7 @@
 
  h=({tab{2:end,4}}');
  formatOut ='HH:MM:SS';
- heure= datestr(h,formatOut);
+ heure= datestr(h,formatOut); %HEURE(D2)*3600+MINUTE(D2)*60+SECONDE(D2)
  
  intervalleJour=cell2mat({tab{2:end,5}}');
  

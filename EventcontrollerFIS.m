@@ -21,8 +21,8 @@
 
 [num,txt,tab]=xlsread('eventdatasample.xls');
 
-devent=cell2mat({tab{2:end,1}}')
- source=cell2mat({tab{2:end,2}}');
+idevent=cell2mat({tab{2:end,1}}')
+source=cell2mat({tab{2:end,2}}');
  d=({tab{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
  DateStringIn=d;
@@ -36,7 +36,7 @@ devent=cell2mat({tab{2:end,1}}')
  
  intervalleSaison=cell2mat({tab{2:end,6}}');
  
- nivChutePrec1=({tab{2:end,7}}');
+nivChutePrec1=({tab{2:end,7}}');
 b=cellfun(@ischar,nivChutePrec1);
 nivChutePrec1(b)={nan}
 nivChutePrec=cell2mat(nivChutePrec1)
@@ -101,6 +101,12 @@ S(i).IntervalleScore=strvcat(intervalleScore);
 inScore=S(i).IntervalleScore;
 
 %t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
+
+%use Table instead of matrix to solve the problem
+%Table array with named variables that can contain different types
+%test with 2 cols
+EventTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
+
 
 % Matrix Construction%
 

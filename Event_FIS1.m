@@ -82,6 +82,11 @@ inScore=S(i).IntervalleScore;
 
 %t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
 
+%use Table instead of matrix to solve the problem
+%Table array with named variables that can contain different types
+%test with 2 cols
+EventTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
+
 
 %%%%%%%Matrix Construction%%%%%%%%%%%%%ù%
 

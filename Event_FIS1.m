@@ -1,7 +1,9 @@
 [num,txt,tab]=xlsread('TestData.xls');
 
- idevent=cell2mat({tab{2:end,1}}')
- source=cell2mat({tab{2:end,2}}');
+ idevent=cell2mat({tab{2:end,1}}');
+ 
+ Source=cell2mat({tab{2:end,2}}');
+ 
  d=({tab{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
  DateStringIn=d;
@@ -115,11 +117,12 @@ T(1:numel(intervalleChutePrec),14)=intervalleChutePrec
 
 %Source=cell2mat({raw{2:end,1}}');%%Problem
 
+ Position=cell2mat({raw{2:end,1}}');
  
-ID_Device=({raw{2:end,2}}');
-id=cellfun(@ischar,ID_Device);
-ID_Device(id)={nan};
-ID_Device_Cam=cell2mat(ID_Device); 
+ ID_Device=({raw{2:end,2}}');
+ id=cellfun(@ischar,ID_Device);
+ ID_Device(id)={nan};
+ ID_Device_Cam=cell2mat(ID_Device); 
  
  dateDevice=({raw{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
@@ -138,5 +141,5 @@ ID_Device_Cam=cell2mat(ID_Device);
  
  %create input table : for device
  
-InputDeviceTable = table(ID_Device, Date_First_use, Total_FalseAlerts_2015, Total_FalseAlerts_2016, Total_FalseAlerts_2017, Total_FalseAlerts_2018, Device_Changed);
+InputDeviceTable = table(Position, ID_Device, Date_First_use, Total_FalseAlerts_2015, Total_FalseAlerts_2016, Total_FalseAlerts_2017, Total_FalseAlerts_2018, Device_Changed);
  

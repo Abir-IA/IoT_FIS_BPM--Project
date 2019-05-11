@@ -127,31 +127,33 @@ T(1:numel(intervalleSemaine),13)=intervalleSemaine
 %status
 [num,txt,tab]=xlsread('DeviceDataSet.xls');
  
- %ID_Device_Cam=cell2mat({tab{2:end,2}}');  
- ID_Device=({tab{2:end,1}}');
- id=cellfun(@ischar,ID_Device);
- ID_Device(id)={nan}
- ID_Device_Cam=cell2mat(ID_Device); 
-
- Position=cell2mat({tab{2:end,2}}');
  
- dateDevice=({tab{2:end,3}}');
+Position=cell2mat({raw{2:end,1}}');
+ 
+ ID_Device=({raw{2:end,2}}');
+ id=cellfun(@ischar,ID_Device);
+ ID_Device(id)={nan};
+ ID_Device_Cam=cell2mat(ID_Device); 
+ 
+ dateDevice=({raw{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
  DateStringIn=dateDevice;
  Date_First_use=datestr(DateStringIn,formatOut);
  
- Total_FalseAlerts_2015=cell2mat({tab{2:end,4}}');
+ Total_FalseAlerts_2015=cell2mat({raw{2:end,4}}');
  
- Total_FalseAlerts_2016=cell2mat({tab{2:end,5}}');
+ Total_FalseAlerts_2016=cell2mat({raw{2:end,5}}');
  
- Total_FalseAlerts_2017=cell2mat({tab{2:end,6}}');
+ Total_FalseAlerts_2017=cell2mat({raw{2:end,6}}');
  
- Total_FalseAlerts_2018=cell2mat({tab{2:end,7}}');
+ Total_FalseAlerts_2018=cell2mat({raw{2:end,7}}');
  
- Device_Changed=cell2mat({tab{2:end,8}}');
+ Device_Changed=cell2mat({raw{2:end,8}}');
  
-
-
+ %create input table : for device
+ 
+InputDeviceTable = table(Position, ID_Device, Date_First_use, Total_FalseAlerts_2015, Total_FalseAlerts_2016, Total_FalseAlerts_2017, Total_FalseAlerts_2018, Device_Changed);
+ 
 
 
 

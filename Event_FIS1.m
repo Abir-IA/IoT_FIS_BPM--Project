@@ -84,8 +84,9 @@ inScore=S(i).IntervalleScore;
 
 %use Table instead of matrix to solve the problem
 %Table array with named variables that can contain different types
-%test with 2 cols
-EventTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
+ %create input table : for patient
+
+InputPatientTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
 
 
 %%%%%%%Matrix Construction%%%%%%%%%%%%%ù%
@@ -134,3 +135,8 @@ ID_Device_Cam=cell2mat(ID_Device);
  Total_FalseAlerts_2018=cell2mat({raw{2:end,7}}');
  
  Device_Changed=cell2mat({raw{2:end,8}}');
+ 
+ %create input table : for device
+ 
+InputDeviceTable = table(ID_Device, Date_First_use, Total_FalseAlerts_2015, Total_FalseAlerts_2016, Total_FalseAlerts_2017, Total_FalseAlerts_2018, Device_Changed);
+ 

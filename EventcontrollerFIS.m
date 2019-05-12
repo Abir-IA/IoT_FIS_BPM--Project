@@ -21,8 +21,9 @@
 
 [num,txt,tab]=xlsread('eventdatasample.xls');
 
-idevent=cell2mat({tab{2:end,1}}')
-source=cell2mat({tab{2:end,2}}');
+idevent=cell2mat({tab{2:end,1}}');
+
+Source=cell2mat({tab{2:end,2}}');
  d=({tab{2:end,3}}');
  formatOut = 'dd/mm/yyyy';
  DateStringIn=d;

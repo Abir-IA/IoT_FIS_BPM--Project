@@ -106,7 +106,10 @@ inScore=S(i).IntervalleScore;
 %Table array with named variables that can contain different types
 %test with 2 cols
 EventTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
-
+%%%%
+r=cellstr(source)
+p=cellstr(scorePatient)
+EventTable = table(idevent,r,date,heure, intervalleJour,intervalleSaison,nivChutePrec, dureeChutePrec,p, freqChutePatient, chuteurRep, idniveauUrgence, intervalleSemaine)
 
 % Matrix Construction%
 

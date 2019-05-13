@@ -1,20 +1,6 @@
-% Use this part of the code if you have the data set otherwise start from
-% line 19 (xlsread) and use the sample data provided with this code
-% (eventdatasample.xls)
-% import csv file
-    %DataSet = readtable('EventDataSet.csv');
-
-% divide a data set randomly into training and testing data set
-% train: 70%, test: 30%
-    %cv = cvpartition(size(DataSet,1),'HoldOut',0.1);
-    %idx = cv.test;
-% Separate to training and test data
-    %dataTrain = DataSet(~idx,:);
-    %dataTest  = DataSet(idx,:);
 
 % Reading data from data set : we make our test here only on
 % a small xls file with random events
-%[num,txt,tab]=csvread('EventDataSet.csv');
 
 %Data for the first input of the first controller: input about patient
 %status
@@ -23,11 +9,15 @@
 
 idevent=cell2mat({tab{2:end,1}}');
 
-Source=cell2mat({tab{2:end,2}}');
- d=({tab{2:end,3}}');
- formatOut = 'dd/mm/yyyy';
- DateStringIn=d;
- date=datestr(DateStringIn,formatOut);
+%source = categorical({tab{2:end,2}}');
+%Source=cellstr(source);
+source={tab{2:end,2}}';
+
+
+d=({tab{2:end,3}}');
+formatOut = 'dd/mm/yyyy';
+DateStringIn=d;
+date=datestr(DateStringIn,formatOut);
 
  h=({tab{2:end,4}}');
  formatOut ='HH:MM:SS';
@@ -37,25 +27,28 @@ Source=cell2mat({tab{2:end,2}}');
  
  intervalleSaison=cell2mat({tab{2:end,6}}');
  
-nivChutePrec1=({tab{2:end,7}}');
-b=cellfun(@ischar,nivChutePrec1);
-nivChutePrec1(b)={nan}
-nivChutePrec=cell2mat(nivChutePrec1)
+ nivChutePrec1=({tab{2:end,7}}');
+ b=cellfun(@ischar,nivChutePrec1);
+ nivChutePrec1(b)={nan};
+ nivChutePrec=cell2mat(nivChutePrec1);
 
-dureeChutePrec1=({tab{2:end,8}}');
-c=cellfun(@ischar,dureeChutePrec1);
-dureeChutePrec1(c)={nan}
-dureeChutePrec=cell2mat(dureeChutePrec1);
+ dureeChutePrec1=({tab{2:end,8}}');
+ c=cellfun(@ischar,dureeChutePrec1);
+ dureeChutePrec1(c)={nan};
+ dureeChutePrec=cell2mat(dureeChutePrec1);
 
-scorePatient=cell2mat({tab{2:end,9}}');      
+%scorePatient=categorical({tab{2:end,9}}'); 
+%scorePatient = str2double({tab{2:end,9}}');
+scorePatient={tab{2:end,9}}';
+ScorePatient=str2double(scorePatient);
+
 freqChutePatient=cell2mat({tab{2:end,10}}');
 chuteurRep=cell2mat({tab{2:end,11}}');
 idniveau_urgence=cell2mat({tab{2:end,12}}');
 intervalleSemaine=cell2mat({tab{2:end,13}}');
 
-intervalleChutePrec=cell2mat({tab{2:end,14}}');
-intervalleScore=char({tab{2:end,15}}');
 
+%Structure
 S(i).ID= idevent(i);
 idev(i)=S(i).ID;
 
@@ -101,16 +94,12 @@ inChute(i)=S(i).INteChutePrec;
 S(i).IntervalleScore=strvcat(intervalleScore);
 inScore=S(i).IntervalleScore;
 
-%t=[idevent; source; intervalleSaison; nivChutePrec; dureeChutePrec; scorePatient; freqChutePatient; chuteurRep; idniveauurgence; intervalleSemaine; intervalleChutePrec; intervalleChutePrec; intervalleScore];
 
 %use Table instead of matrix to solve the problem
 %Table array with named variables that can contain different types
-%test with 2 cols
-EventTable = table(heure, date,idevent, intervalleJour, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, intervalleScore, idniveau_urgence, dureeChutePrec, nivChutePrec);
-%%%%
-r=cellstr(source)
-p=cellstr(scorePatient)
-EventTable = table(idevent,r,date,heure, intervalleJour,intervalleSaison,nivChutePrec, dureeChutePrec,p, freqChutePatient, chuteurRep, idniveauUrgence, intervalleSemaine)
+ %create input table : for patient
+EventTable = table(heure, date,idevent, intervalleJour, source, ScorePatient, intervalleSemaine, intervalleSaison, dureeChutePrec, freqChutePatient, chuteurRep, idniveau_urgence, dureeChutePrec, nivChutePrec)
+
 
 % Matrix Construction%
 
